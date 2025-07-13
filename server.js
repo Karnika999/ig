@@ -5,11 +5,20 @@ const io = require('socket.io')(http);
 
 app.use(express.static('.'));
 
+let messageHistory = []; // 📝 store messages here
+
 io.on('connection', (socket) => {
   console.log('a user connected');
 
+  // Send existing history to the new user
+  socket.emit('history', messageHistory);
+
   socket.on('chat message', (data) => {
-    io.emit('chat message', data);
+    const timestamp = new Date().toLocaleTimeString(); // add timestamp
+    const messageWithTime = { ...data, timestamp };
+    messageHistory.push(messageWithTime); // save to history
+
+    io.emit('chat message', messageWithTime); // send to everyone
   });
 
   socket.on('disconnect', () => {
