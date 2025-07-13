@@ -1,28 +1,28 @@
+* { box-sizing: border-box; }
 body {
-  font-family: Arial, sans-serif;
-  background: #333;
-  color: #fff;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 20px;
+  height: 100vh;
+  background: #111;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
-
-h2 {
+.chat-header {
   text-align: center;
+  background: #222;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
 }
-
 .chat-area {
-  width: 100%;
-  max-width: 400px;
-  flex-grow: 1;
+  flex: 1;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  padding: 10px;
   gap: 5px;
-  margin: 10px 0;
 }
-
 .chat-message {
   max-width: 70%;
   padding: 8px 12px;
@@ -30,26 +30,31 @@ h2 {
   font-size: 14px;
   word-wrap: break-word;
 }
-
 .from-pranav {
   align-self: flex-start;
   background: rgb(0,195,255);
   color: #fff;
   border-bottom-left-radius: 0;
 }
-
 .from-naman {
   align-self: flex-end;
   background: rgb(255,48,54);
   color: #fff;
   border-bottom-right-radius: 0;
 }
-
-#messageInput {
-  width: 70%;
+.input-area {
+  display: flex;
+  padding: 5px;
+  background: #222;
+}
+#username {
   padding: 5px;
 }
-
+#messageInput {
+  flex: 1;
+  padding: 5px;
+  margin: 0 5px;
+}
 button {
-  padding: 6px 10px;
+  padding: 5px 10px;
 }

@@ -1,3 +1,4 @@
+const fs = require('fs');
 const express = require('express');
 const app = express();
 const http = require('http').Server(app);
@@ -5,24 +6,28 @@ const io = require('socket.io')(http);
 
 app.use(express.static('.'));
 
-let messageHistory = []; // 📝 store messages here
+let messages = [];
+
+// Load existing messages on startup
+if (fs.existsSync('messages.json')) {
+  messages = JSON.parse(fs.readFileSync('messages.json'));
+}
 
 io.on('connection', (socket) => {
-  console.log('a user connected');
+  console.log('User connected');
 
-  // Send existing history to the new user
-  socket.emit('history', messageHistory);
+  // Send chat history to new user
+  socket.emit('chat history', messages);
 
+  // On new chat message
   socket.on('chat message', (data) => {
-    const timestamp = new Date().toLocaleTimeString(); // add timestamp
-    const messageWithTime = { ...data, timestamp };
-    messageHistory.push(messageWithTime); // save to history
-
-    io.emit('chat message', messageWithTime); // send to everyone
+    messages.push(data);
+    fs.writeFileSync('messages.json', JSON.stringify(messages, null, 2)); // pretty print
+    io.emit('chat message', data); // broadcast
   });
 
   socket.on('disconnect', () => {
-    console.log('user disconnected');
+    console.log('User disconnected');
   });
 });
 

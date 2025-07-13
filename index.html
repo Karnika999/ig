@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Simple Chat</title>
+  <title>My Chat App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>My Chat App</h2>
-  <select id="username">
-    <option value="pranav">Pranav</option>
-    <option value="naman">Naman</option>
-  </select>
+  <div class="chat-header">My Chat App</div>
   <div id="messages" class="chat-area"></div>
-
-  <input id="messageInput" autocomplete="off" placeholder="Type message...">
-  <button onclick="sendMessage()">Send</button>
-
+  <div class="input-area">
+    <select id="username">
+      <option value="pranav">Pranav</option>
+      <option value="naman">Naman</option>
+    </select>
+    <input id="messageInput" placeholder="Type message...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
   <script src="/socket.io/socket.io.js"></script>
   <script src="script.js"></script>
 </body>

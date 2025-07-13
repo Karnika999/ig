@@ -1,7 +1,7 @@
 {
-  "name": "my-chat-app",
+  "name": "chat-app",
   "version": "1.0.0",
-  "description": "Simple chat app for me and my friend",
+  "description": "Simple chat app with history",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
