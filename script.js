@@ -4,31 +4,27 @@ function sendMessage() {
   var msg = document.getElementById('messageInput').value;
   var user = document.getElementById('username').value;
   if(msg) {
+    // send message to server with user info
     socket.emit('chat message', { user: user, msg: msg });
     document.getElementById('messageInput').value = '';
   }
 }
 
-// Show single new message
+// listen for incoming messages and add chat bubbles
 socket.on('chat message', function(data){
-  addMessageToUI(data);
+  var msgDiv = document.createElement('div');
+  msgDiv.classList.add('chat-message');
+  msgDiv.classList.add('from-' + data.user.toLowerCase());
+  msgDiv.textContent = data.user + ': ' + data.msg;
+
+  document.getElementById('messages').appendChild(msgDiv);
+
+  // scroll to bottom
+  var chatArea = document.getElementById('messages');
+  chatArea.scrollTop = chatArea.scrollHeight;
 });
 
-// Show history on first load
-socket.on('history', function(history){
-  document.getElementById('messages').innerHTML = ''; // clear existing
-  history.forEach(addMessageToUI);
-});
-
-// Add message item with timestamp
-function addMessageToUI(data) {
-  var item = document.createElement('li');
-  item.textContent = `[${data.timestamp}] ${data.user}: ${data.msg}`;
-  document.getElementById('messages').appendChild(item);
-  window.scrollTo(0, document.body.scrollHeight);
-}
-
-// Send on Enter
+// send on Enter key
 document.getElementById('messageInput').addEventListener('keydown', function(e){
   if(e.key === 'Enter') sendMessage();
 });
