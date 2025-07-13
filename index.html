@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Chat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>My Chat App</h2>
+  <select id="username">
+    <option value="pranav">Pranav</option>
+    <option value="naman">Naman</option>
+  </select>
+  <ul id="messages"></ul>
+  <input id="messageInput" autocomplete="off" placeholder="Type message...">
+  <button onclick="sendMessage()">Send</button>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
