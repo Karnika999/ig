@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home - Chat App</title>
+<style>
+  body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #5468FF; margin: 0; }
+  button { padding: 16px 24px; font-size: 18px; color: white; background: #3A4DB2; border: none; border-radius: 8px; cursor: pointer; }
+  button:hover { background: #2b3a8e; }
+</style>
+</head>
+<body>
+<button onclick="goChat()">Go to Chat</button>
+<script>
+function goChat(){
+  const user=localStorage.getItem('user');
+  if(!user) window.location='login.html';
+  else window.location='chat.html';
+}
+</script>
+</body>
+</html>

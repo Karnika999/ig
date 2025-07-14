@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chat</title>
+<link rel="stylesheet" href="chat.css">
+</head>
+<body>
+<div class="chat-header">
+  <div class="chat-title" id="chatTitle"></div>
+  <div class="chat-caption" id="chatCaption"></div>
+  <button id="clearBtn">Clear Chat</button>
+</div>
+<div id="chatWindow" class="chat-window"></div>
+<div class="typing-indicator" id="typingIndicator" style="display:none;"></div>
+<div class="chat-input">
+  <input type="text" id="messageInput" placeholder="Type a message..." />
+  <button id="sendBtn">Send</button>
+</div>
+<audio id="notifSound" src="notif.mp3" preload="auto"></audio>
+<script src="chat.js"></script>
+</body>
+</html>
