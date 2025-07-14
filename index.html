@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Chat App</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - Chat App</title>
+<style>
+  body { font-family: sans-serif; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; background: #5468FF; color: white; margin: 0; }
+  h1 { margin-bottom: 20px; }
+  button { padding: 12px 20px; margin: 8px; font-size: 18px; color: white; background: #3A4DB2; border: none; border-radius: 8px; cursor: pointer; }
+  button:hover { background: #2b3a8e; }
+</style>
 </head>
 <body>
-  <div class="chat-header">My Chat App</div>
-  <div id="messages" class="chat-area"></div>
-  <div class="input-area">
-    <select id="username">
-      <option value="pranav">Pranav</option>
-      <option value="naman">Naman</option>
-    </select>
-    <input id="messageInput" placeholder="Type message...">
-    <button onclick="sendMessage()">Send</button>
-  </div>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="script.js"></script>
+<h1>Login</h1>
+<button onclick="login('Naman')">Login as Naman</button>
+<button onclick="login('Pranav')">Login as Pranav</button>
+<script>
+function login(user){
+  localStorage.setItem('user', user);
+  window.location='home.html';
+}
+</script>
 </body>
 </html>
